@@ -4,27 +4,41 @@ using UnityEngine;
 
 public abstract class Inventory
 {
-    public List<Item> itemList { get; set; }
+    public List<Slot> itemList { get; set; }
 
     public int invCapacity { get; set; }
 
 
     public Inventory(int capacity)
     {
-        this.itemList = new List<Item>();
-        this.invCapacity = capacity;
+        this.itemList = new List<Slot>();
+        
+        for (int i = 0; i < capacity; i++)
+        {
+            this.itemList.Add(new Slot());   
+        }
+       
+        //this.invCapacity = capacity;
     }
 
     public virtual void AddItem(Item item)
     {
-        if (itemList.Count <= invCapacity)
+        var isAdded = false;
+        foreach (var slot in itemList)
         {
-            itemList.Add(item);
-            return;
+            if(slot.amount == 0)
+            {
+                slot.item = item;
+                slot.amount = 1;
+                isAdded = true;
+                break;
+            }
         }
-       
-        Debug.Log("There is no more space for weapons");
-       
+        if (isAdded)
+            Debug.Log("Item Added");
+        else
+            Debug.Log("There is no more space in the inventory");
+
     }
 
     public void RemoveItem(int index)

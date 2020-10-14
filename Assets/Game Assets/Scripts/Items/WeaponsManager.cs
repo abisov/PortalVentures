@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class WeaponsManager
+public static class ItemManager
 {
     public static List<Weapon> weapons = new List<Weapon>() {
                 new Weapon(0, "Old Short Sword", 5, 50, true, Weapon.WeaponType.Sword),

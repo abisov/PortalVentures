@@ -30,10 +30,10 @@ public class Player : Character
     {
         //Test Start
 
-        Debug.Log(WeaponsManager.GetWeapon("Old Short Sword").Name);
+        Debug.Log(ItemManager.GetWeapon("Old Short Sword").Name);
 
-        Instantiate(WeaponsManager.GetWeapon("Old Short Sword").ItemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        Instantiate(WeaponsManager.GetWeapon("Golden Short Sword").ItemPrefab, new Vector3(2, 0, 0), Quaternion.identity);
+        //Instantiate(WeaponsManager.GetWeapon("Old Short Sword").ItemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        //Instantiate(WeaponsManager.GetWeapon("Golden Short Sword").ItemPrefab, new Vector3(2, 0, 0), Quaternion.identity);
 
         //Test End
 

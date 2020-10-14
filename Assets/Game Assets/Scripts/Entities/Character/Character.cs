@@ -43,6 +43,8 @@ public abstract class Character : Damageable
 
     internal Quaternion targetRotation = Quaternion.identity;
 
+    public Combat combat;
+
 
     //Inventories
    
@@ -55,7 +57,7 @@ public abstract class Character : Damageable
 
     protected virtual void Start()
     {
-        
+        combat = new Combat(this);
     }
     protected virtual void Update()
     {
@@ -90,28 +92,7 @@ public abstract class Character : Damageable
        
     }
 
-    public void Melee()
-    {
-        
-        Vector3 pos = transform.position;
-
-        for (int i = 0; i < Damageables.Count; i++)
-        {
-            Vector3 vec = Damageables[i].transform.position;
-            Vector3 direction  = vec - pos;
-
-            if (Vector3.Dot(direction, this.transform.forward) < 2.7)
-            {
-                Damageables[i].GetComponent<Damageable>().ApplyDamage(damage);
-                if (Damageables[i].health <= 0)
-                {
-                    Damageables.RemoveAt(i);
-                }
-            }
-        }
-
-       
-    }
+    
 
     #endregion
 

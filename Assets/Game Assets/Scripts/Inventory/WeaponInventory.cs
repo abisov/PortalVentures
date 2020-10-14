@@ -23,7 +23,7 @@ public class WeaponInventory : Inventory
 
     public Item Equip(int index)
     {
-        Item w = itemList[index].Use();
+        Item w = itemList[index].item.Use();
         return w;
     }
 }

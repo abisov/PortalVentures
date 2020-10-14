@@ -56,6 +56,13 @@ public class PInputNCollision : MonoBehaviour
 
         }
 
+        //Inventory
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            player.pInventory.inventoryVisualizer.ShowInventory();
+            
+        }
+
        
     }
 }

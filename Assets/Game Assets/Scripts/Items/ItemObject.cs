@@ -9,8 +9,10 @@ public class ItemObject : MonoBehaviour
     private void Awake()
     {
         this.gameObject.tag = "Item";
-        Instantiate(WeaponsManager.GetWeapon(itemID).ItemPrefab, this.transform);
+        GameObject item = Instantiate(ItemManager.GetWeapon(itemID).ItemPrefab, this.transform);
+        
+        item.AddComponent(typeof(Rigidbody));
+        item.transform.localScale = new Vector3(1, 1, 1);
     }
-
 
 }

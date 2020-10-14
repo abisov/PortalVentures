@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5109314781411456440}
   - component: {fileID: 8162832789476063773}
   - component: {fileID: 6245580524512956119}
-  - component: {fileID: 7965040403501999195}
+  - component: {fileID: 5640543080791247614}
   m_Layer: 0
-  m_Name: Sword
+  m_Name: Old Short Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5596916699868622594}
   m_LocalRotation: {x: 0, y: 0.059306376, z: 0, w: 0.9982399}
   m_LocalPosition: {x: -0.815, y: 0, z: 0}
-  m_LocalScale: {x: 4.7123017, y: 4.712305, z: 4.7123}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -80,8 +80,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7965040403501999195
-MeshCollider:
+--- !u!65 &5640543080791247614
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,7 +90,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4686849319519084627, guid: 23e98abef9262064a8171e43962d146a, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.101655096, y: 0.032738753, z: 1.3442945}
+  m_Center: {x: 0.000043222237, y: -0.000022316352, z: 0.39336264}
