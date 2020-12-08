@@ -14,7 +14,7 @@ public class Player : Character
 
     public PAnimations pAnimations;
 
-    public PInventory pInventory;
+    public static Player pInstance;
 
     //
 
@@ -29,7 +29,7 @@ public class Player : Character
     protected override void Start()
     {
         //Test Start
-
+        
         Debug.Log(ItemManager.GetWeapon("Old Short Sword").Name);
 
         //Instantiate(WeaponsManager.GetWeapon("Old Short Sword").ItemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -38,14 +38,18 @@ public class Player : Character
         //Test End
 
 
-
+        pInstance = this;
         base.Start();
     }
-    protected override void Update()
-    {       
+    protected override void FixedUpdate()
+    {
+        if (health <= 0)
+        {
+            Debug.Log("Dead Dead Dead Dead, You are dead");
+            Destroy(this.gameObject);
+        }
         
-        
-        base.Update();
+        base.FixedUpdate();
     }
     #endregion
 

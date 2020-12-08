@@ -5,10 +5,17 @@ using UnityEngine;
 public class Combat
 {
     private Character character;
+    private int baseDamage = 1;
 
     public Combat(Character character)
     {
         this.character = character;
+    }
+
+    public Combat(Character character, int baseDamage)
+    {
+        this.character = character;
+        this.baseDamage = baseDamage;
     }
     public void Melee()
     {
@@ -22,7 +29,9 @@ public class Combat
 
             if (Vector3.Dot(direction, character.transform.forward) < 2.7)
             {
-                character.Damageables[i].GetComponent<Damageable>().ApplyDamage(character.damage);
+                Debug.Log(character.chInventory);
+                var bonusDamage = character.chInventory != null ? character.damage * character.chInventory.equipedWeapon.damage : character.damage;
+                character.Damageables[i].GetComponent<Damageable>().ApplyDamage(bonusDamage + baseDamage);
                 if (character.Damageables[i].health <= 0)
                 {
                     character.Damageables.RemoveAt(i);
@@ -32,4 +41,6 @@ public class Combat
 
 
     }
+
+
 }

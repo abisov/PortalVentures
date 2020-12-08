@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class Character : Damageable
 {
@@ -15,7 +16,16 @@ public abstract class Character : Damageable
     [SerializeField]
     internal Animator anim;
 
+    [SerializeField]
+    public ChInventory chInventory;
+
+    public int viewRange = 10;
+
+    public Combat combat;
+
     
+
+
 
 
 
@@ -43,11 +53,13 @@ public abstract class Character : Damageable
 
     internal Quaternion targetRotation = Quaternion.identity;
 
-    public Combat combat;
+    protected StateMachine stateMachine;
+
+    protected NavMeshAgent agent;
 
 
     //Inventories
-   
+
 
 
     #endregion
@@ -55,11 +67,30 @@ public abstract class Character : Damageable
     #region Main Methods
 
 
+
+
+    protected virtual void Awake()
+    {
+        combat = new Combat(this, 10);
+        stateMachine = new StateMachine();
+        agent = this.GetComponent<NavMeshAgent>();
+
+
+
+    }
+
+
     protected virtual void Start()
     {
         combat = new Combat(this);
     }
+
     protected virtual void Update()
+    {
+        stateMachine.Tick();
+    }
+
+    protected virtual void FixedUpdate()
     {
 
         //this.transform.Translate(Movement * MovementSpeed * Time.deltaTime, Space.World);
@@ -75,22 +106,7 @@ public abstract class Character : Damageable
         
     }
 
-    protected void OnTriggerEnter(Collider col)
-    {
-       
-        if (col.gameObject.tag == "Damageable")
-        {
-            Damageables.Add(col.GetComponent<Damageable>());
-        }
-            
-       
-    }
-    protected void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.tag == "Damageable")
-            Damageables.Remove(col.GetComponent<Damageable>());
-       
-    }
+   
 
     
 

@@ -1,14 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Enemy : Character
+public abstract class Enemy : Character
 {
+    //[SerializeField]
+    //protected Combat combat;
+    public int EnemyDamage;
+    
     protected override void Kill()
     {
-        for (int i = 0; i < this.transform.childCount; i++)
-        {
-            Rigidbody rb = this.transform.GetChild(i).gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
-        }
+        
+
+
+    }
+
+    protected override void Update() 
+    {
+        base.Update();
+
+        
+        
+    }
+
+    protected override void FixedUpdate()
+    {
+        
     }
 }

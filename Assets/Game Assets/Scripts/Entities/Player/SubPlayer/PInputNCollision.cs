@@ -6,6 +6,8 @@ public class PInputNCollision : MonoBehaviour
 {
     [SerializeField]
     private Player player;
+
+    public bool isDash = false;
     
 
     private void Update()
@@ -16,13 +18,23 @@ public class PInputNCollision : MonoBehaviour
         player.Movement.Normalize();
 
         player.SpeedMod = 1f;
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && !isDash)
         {
             player.SpeedMod = player.RunngingSpeed;
             player.anim.SetFloat("SpeedMultiplier", 1.8f);
         }
 
-      
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+
+
+
+            player.pMovement.Dash();
+        }
+
+
+
+
 
         //Rotation
         Plane playerPlane = new Plane(Vector3.up, this.transform.position);
@@ -59,10 +71,12 @@ public class PInputNCollision : MonoBehaviour
         //Inventory
         if (Input.GetKeyDown(KeyCode.E))
         {
-            player.pInventory.inventoryVisualizer.ShowInventory();
+            player.chInventory.inventoryVisualizer.ShowInventory();
             
         }
 
        
     }
+
+    
 }
